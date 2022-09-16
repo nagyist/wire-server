@@ -646,7 +646,13 @@ defNewClientWithVerificationCode mbCode ty pks lpk =
       newClientVerificationCode = mbCode
     }
 
-getPreKey :: Brig -> UserId -> UserId -> ClientId -> Http ResponseLBS
+getPreKey ::
+  (MonadIO m, MonadCatch m, MonadFail m, MonadHttp m, HasCallStack) =>
+  Brig ->
+  UserId ->
+  UserId ->
+  ClientId ->
+  m ResponseLBS
 getPreKey brig zusr u c =
   get $
     brig
