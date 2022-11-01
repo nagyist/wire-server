@@ -144,7 +144,7 @@ let
       )
       executablesMap;
 
-  hPkgs = localMods@{ enableOptimization, enableDocs, enableTests }: pkgs.haskell.packages.ghc8107.override {
+  hPkgs = localMods@{ enableOptimization, enableDocs, enableTests }: pkgs.haskell.packages.ghc92.override {
     overrides = lib.composeManyExtensions [
       pinnedPackages
       (localPackages localMods)
@@ -361,7 +361,7 @@ in
   devEnv = pkgs.buildEnv {
     name = "wire-server-dev-env";
     paths = commonTools ++ [
-      (pkgs.haskell-language-server.override { supportedGhcVersions = [ "8107" ]; })
+      (pkgs.haskell-language-server.override { supportedGhcVersions = [ "92" ]; })
       pkgs.ghcid
       pkgs.cfssl
       pkgs.kind
