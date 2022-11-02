@@ -213,10 +213,6 @@ let
       version = "0.4.0";
       sha256 = "sha256-DSMckKIeVE/buSMg8Mq+mUm1bYPYB7veA11Ns7vTBbc=";
     };
-    partial-isomorphisms = {
-      version = "0.2.2.1";
-      sha256 = "sha256-TdsLB0ueaUUllLdvcGu3YNQXCfGRRk5WxP3deHEbHGI=";
-    };
     singletons = {
       version = "2.7";
       sha256 = "sha256-q7yc/wyGSyYI0KdgHgRi0WISv9WEibxQ5yM7cSjXS2s=";
