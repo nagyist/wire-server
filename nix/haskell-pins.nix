@@ -221,10 +221,6 @@ let
       version = "1.0";
       sha256 = "sha256-dv/W8hIPoHVevxiiCb6OfeP53O/9HPgUiqOHGSNb/pk=";
     };
-    polysemy = {
-      version = "1.7.1.0";
-      sha256 = "sha256-zNOo6HD1VP8e2idMygOXDfQV0KzF8KcxRGbC0WeIlGM=";
-    };
   };
   # Name -> Source -> Maybe Subpath -> Drv
   mkGitDrv = name: src: subpath:
