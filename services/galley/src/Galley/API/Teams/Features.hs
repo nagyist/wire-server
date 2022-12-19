@@ -738,6 +738,7 @@ instance SetFeatureConfig db LegalholdConfig where
              ListItems LegacyPaging ConvId,
              MemberStore,
              ProposalStore,
+             SubConversationStore,
              TeamFeatureStore db,
              TeamStore,
              TeamMemberStore InternalPaging,

@@ -102,7 +102,8 @@ rmClientH ::
          MemberStore,
          Error InternalError,
          ProposalStore,
-         P.TinyLog
+         P.TinyLog,
+         SubConversationStore
        ]
       r
   ) =>

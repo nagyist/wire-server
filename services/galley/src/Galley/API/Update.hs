@@ -285,6 +285,7 @@ type UpdateConversationAccessEffects =
      Input UTCTime,
      MemberStore,
      ProposalStore,
+     SubConversationStore,
      TeamStore,
      TinyLog
    ]
@@ -808,6 +809,7 @@ addMembers ::
        LegalHoldStore,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TeamStore,
        TinyLog
      ]
@@ -847,6 +849,7 @@ addMembersUnqualifiedV2 ::
        LegalHoldStore,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TeamStore,
        TinyLog
      ]
@@ -886,6 +889,7 @@ addMembersUnqualified ::
        LegalHoldStore,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TeamStore,
        TinyLog
      ]
@@ -1073,6 +1077,7 @@ removeMemberUnqualified ::
        Input UTCTime,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TinyLog
      ]
     r =>
@@ -1100,6 +1105,7 @@ removeMemberQualified ::
        Input UTCTime,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TinyLog
      ]
     r =>
@@ -1169,6 +1175,7 @@ removeMemberFromLocalConv ::
        Input UTCTime,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TinyLog
      ]
     r =>

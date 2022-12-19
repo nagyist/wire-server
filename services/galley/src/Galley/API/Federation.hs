@@ -58,7 +58,6 @@ import qualified Galley.Effects.ConversationStore as E
 import qualified Galley.Effects.FireAndForget as E
 import qualified Galley.Effects.MemberStore as E
 import Galley.Effects.ProposalStore (ProposalStore)
-import Galley.Effects.SubConversationStore
 import Galley.Options
 import Galley.Types.Conversations.Members
 import Galley.Types.UserList (UserList (UserList))
@@ -133,6 +132,7 @@ onClientRemoved ::
          Input UTCTime,
          MemberStore,
          ProposalStore,
+         SubConversationStore,
          TinyLog
        ]
       r
@@ -343,6 +343,7 @@ leaveConversation ::
        Input UTCTime,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TinyLog
      ]
     r =>
@@ -474,6 +475,7 @@ onUserDeleted ::
        Input Env,
        MemberStore,
        ProposalStore,
+       SubConversationStore,
        TinyLog
      ]
     r =>
@@ -534,6 +536,7 @@ updateConversation ::
          LegalHoldStore,
          MemberStore,
          ProposalStore,
+         SubConversationStore,
          TeamStore,
          TinyLog,
          ConversationStore,
