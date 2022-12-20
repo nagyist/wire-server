@@ -75,8 +75,8 @@ setEpochForSubConversation :: ConvId -> SubConvId -> Epoch -> Client ()
 setEpochForSubConversation cid sconv epoch =
   retry x5 (write Cql.insertEpochForSubConversation (params LocalQuorum (epoch, cid, sconv)))
 
-listSubConversations :: ConvId -> Client [SubConvId]
-listSubConversations cid =
+listSubConversationIds :: ConvId -> Client [SubConvId]
+listSubConversationIds cid =
   fmap runIdentity
     <$> retry
       x1
@@ -96,4 +96,4 @@ interpretSubConversationStoreToCassandra = interpret $ \case
   GetSubConversationPublicGroupState convId subConvId -> embedClient (selectSubConvPublicGroupState convId subConvId)
   SetGroupIdForSubConversation gId cid sconv -> embedClient $ setGroupIdForSubConversation gId cid sconv
   SetSubConversationEpoch cid sconv epoch -> embedClient $ setEpochForSubConversation cid sconv epoch
-  ListSubConversations cid -> embedClient $ listSubConversations cid
+  ListSubConversationIds cid -> embedClient $ listSubConversationIds cid

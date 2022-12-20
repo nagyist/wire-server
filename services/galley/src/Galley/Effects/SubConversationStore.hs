@@ -37,6 +37,6 @@ data SubConversationStore m a where
   GetSubConversationPublicGroupState :: ConvId -> SubConvId -> SubConversationStore m (Maybe OpaquePublicGroupState)
   SetGroupIdForSubConversation :: GroupId -> Qualified ConvId -> SubConvId -> SubConversationStore m ()
   SetSubConversationEpoch :: ConvId -> SubConvId -> Epoch -> SubConversationStore m ()
-  ListSubConversations :: ConvId -> SubConversationStore m [SubConvId]
+  ListSubConversationIds :: ConvId -> SubConversationStore m [SubConvId]
 
 makeSem ''SubConversationStore
