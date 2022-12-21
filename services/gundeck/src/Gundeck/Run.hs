@@ -80,7 +80,7 @@ run o = do
   where
     middleware :: Env -> Wai.Middleware
     middleware e =
-      versionMiddleware
+      versionMiddleware (fold (o ^. optSettings . setBlacklistedVersions))
         . waiPrometheusMiddleware sitemap
         . GZip.gunzip
         . GZip.gzip GZip.def
