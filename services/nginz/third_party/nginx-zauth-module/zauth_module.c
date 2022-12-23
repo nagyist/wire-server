@@ -270,7 +270,6 @@ static ngx_int_t zauth_handle_request (ngx_http_request_t * r) {
         ZauthLocationConf const * lc =
                 ngx_http_get_module_loc_conf(r, zauth_module);
 
-
         // if zauth is off (used for unauthenticated endpoints) we do not need to handle oauth
         if (lc == NULL || lc->toggle != 1) {
                 return NGX_DECLINED;
@@ -291,6 +290,23 @@ static ngx_int_t zauth_handle_request (ngx_http_request_t * r) {
                 if (empty_header_status != NGX_OK) {
                         return NGX_ERROR;
                 }
+                // there is weird error
+                // with a legalhold token, it is possible that zauth will fail, i.e. the token will be rejected
+                // nevertheless, the corresponding headers are set, e.g. Z-User
+                // if oauth is now enabled, the request is allowed through as it is
+                // then wire-server looks for a Z-User header and finds it, and treats the request as authorized
+                // that means, in case of status != NGX_OK and oauth=on we have to empty relevant headers except the Z-Oauth header
+                // particularly:
+                //    Z-Type
+                //    Z-User
+                //    Z-Client
+                //    Z-Connection
+                //    Z-Provider
+                //    Z-Bot
+                //    Z-Conversation
+                // run this test to check:
+                // make c package=brig && ./hack/bin/cabal-run-integration.sh brig -p '(!/turn/&&!/user.auth.cookies.limit/)&&/nginz-legalhold-login/'
+                return _
                 return NGX_DECLINED;
         }
         
